@@ -19,6 +19,8 @@ export default function Signup() {
 
     const isInvalid = firstName === '' || password === '' || emailAddress === ''
 
+
+    //Firebase auth
     const handleSignup = (event) => {
         event.preventDefault()
 
@@ -26,16 +28,19 @@ export default function Signup() {
             .auth()
             .createUserWithEmailAndPassword(emailAddress, password)
             .then((result) => 
+            //update name and avatar if user was successfully created
                 result.user
                     .updateProfile({
                         displayName: firstName,
                         photoURL: Math.floor(Math.random() * 5) + 1,
 
                     }).then(() => {
+                        //redirect to browse
                         history.push(ROUTES.BROWSE)
                     })
             )
             .catch((error) => {
+                //clear states
                 setFirstName('')
                 setEmailAddress('')
                 setPassword('')
