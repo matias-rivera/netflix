@@ -7,6 +7,7 @@ import logo from '../logo.svg'
 
 export function BrowseContainer({ slides }) {
 
+    const [searchTerm, setSearchTerm] = useState('')
     const [profile, setProfile] = useState({})
     const [loading, setLoading] = useState(true)
     const { firebase } = useContext(FirebaseContext)
@@ -29,6 +30,11 @@ export function BrowseContainer({ slides }) {
                         <Header.TextLink>Films</Header.TextLink>
                     </Header.Group>
                     <Header.Group>
+                        <Header.Search 
+                            searchTerm={searchTerm} 
+                            setSearchTerm={setSearchTerm}
+                        />
+                        
                         <Header.Profile>
                             <Header.Picture src={user.photoURL} />
                             <Header.Dropdown>
@@ -49,6 +55,7 @@ export function BrowseContainer({ slides }) {
                     <Header.Text>
                         Arthur Fleck adora hacer reír a la gente, pero su carrera como comediante es un fracaso. El repudio social, la marginación y una serie de trágicos acontecimientos lo conducen por el sendero de la locura y, finalmente, cae en el mundo del crimen.
                     </Header.Text>
+                    <Header.PlayButton>Play</Header.PlayButton>
                 </Header.Feature>
             </Header>
         </>
