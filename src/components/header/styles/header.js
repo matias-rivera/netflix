@@ -7,6 +7,8 @@ export const Background = styled.div`
     flex-direction: column;
     background: url(${({ src }) => src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'}) 
     top left / cover no-repeat;
+    margin-bottom: 50px;
+    max-height: 45vw;
 
     @media (max-width: 1100px) {
         ${({ dontShowOnSmallViewPort}) => 
@@ -22,11 +24,29 @@ export const Group = styled.div`
 
 export const Container = styled.div`
     display: flex;
-    margin: 0 56px;
-    height: 64px;
+    margin: 0 40px;
+    max-width: 500px;
+    height: 100px;
     padding: 18px 0;
     justify-content: space-between;
     align-items: center;
+
+    a{
+        display: flex;
+    }
+
+    @media (max-width: 1000px) {
+        margin: 0 30px;
+    }
+`;
+
+export const Navbar = styled.div`
+    display: flex;
+    height: 64px;
+    padding: 10px 30px;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(0,0,0,0.7455182756696428) 0%, rgba(22,18,18,0) 100%); 
 
     a{
         display: flex;
@@ -142,6 +162,25 @@ export const PlayButton = styled.button`
     }
 `;
 
+export const InfoButton = styled.button`
+    box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
+    background: radial-gradient(circle, rgba(121,121,121,1) 90%, rgba(149,140,140,0.9051821412158614) 100%);      color: #fff;
+    font-weight: bold;
+    border-width: 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 160px;
+    font-size: 20px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background: radial-gradient(circle, rgba(121,121,121,0.5214286398153012) 100%, rgba(149,140,140,0.9051821412158614) 100%);
+        color: white;
+    }
+`;
+
 export const SearchInput = styled.input`
     background-color: #44444459;
     color: white;
@@ -201,8 +240,16 @@ export const ButtonLink = styled(ReactRouterLink)`
     }
 `;
 
+
+
+export const ButtonGroup = styled.div`
+    display:flex;
+    max-width: 250px;
+    justify-content: space-between;
+`;
+
 export const Feature = styled(Container)`
-    padding: 170px 0 500px 0;
+    padding: 200px 0 350px 0;
     flex-direction: column;
     align-items: normal;
     width: 50%;
@@ -223,7 +270,8 @@ export const Text = styled.p`
 
 export const FeatureCallOut = styled.h2`
     color: white;
-    font-size: 50px;
+    font-size: 80px;
+    text-transform: uppercase;
     line-height: normal;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.45);

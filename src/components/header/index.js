@@ -14,9 +14,12 @@ import {
     FeatureCallOut, 
     Text,
     PlayButton,
+    InfoButton,
     Search,
     SearchIcon,
-    SearchInput
+    SearchInput,
+    ButtonGroup,
+    Navbar
 } from './styles/header'
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -37,6 +40,10 @@ Header.Profile = function HeaderProfile({ children, ...restProps}){
 
 Header.Picture = function HeaderPicture({ src, ...restProps}){
     return <Picture {...restProps} src={`/images/users/${src}.png`} />
+}
+
+Header.ButtonGroup = function HeaderButtonGroup({ children, ...restProps}){
+    return <ButtonGroup {...restProps}>{children}</ButtonGroup>
 }
 
 Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps }) {
@@ -69,12 +76,20 @@ Header.PlayButton = function HeaderPlayButton({children, ...restProps}){
     return <PlayButton {...restProps}>{children}</PlayButton>
 }
 
+Header.InfoButton = function HeaderInfoButton({children, ...restProps}){
+    return <InfoButton {...restProps}>{children}</InfoButton>
+}
+
 Header.TextLink = function HeaderTextLink({ children, ...restProps}){
     return <Link {...restProps}>{children}</Link>
 }
 
 Header.Frame = function HeaderFrame({ children, ...restProps}){
     return <Container {...restProps}>{children}</Container>
+}
+
+Header.Navbar = function HeaderNavbar({ children, ...restProps}){
+    return <Navbar {...restProps}>{children}</Navbar>
 }
 
 Header.Group = function HeaderGroup({ children, ...restProps}){

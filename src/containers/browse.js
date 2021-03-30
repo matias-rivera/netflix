@@ -30,8 +30,8 @@ export function BrowseContainer({ slides }) {
     return profile.displayName ? (
         <>
             {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody /> }
-            <Header src='joker1' dontShowOnSmallViewPort>
-                <Header.Frame>
+            <Header src='new-amsterdam' dontShowOnSmallViewPort>
+                <Header.Navbar>
                     <Header.Group>
                         <Header.Logo to={ROUTES.HOME} src={logo} alt='Netflix' />
                         <Header.TextLink 
@@ -45,6 +45,18 @@ export function BrowseContainer({ slides }) {
                             onClick={() => setCategory('films')}
                         >
                             Films
+                        </Header.TextLink>
+                        <Header.TextLink
+                        >
+                            Popular
+                        </Header.TextLink>
+                        <Header.TextLink
+                        >
+                            My List
+                        </Header.TextLink>
+                        <Header.TextLink
+                        >
+                            Wach Again
                         </Header.TextLink>
                     </Header.Group>
                     <Header.Group>
@@ -66,14 +78,17 @@ export function BrowseContainer({ slides }) {
                             </Header.Dropdown>
                         </Header.Profile>
                     </Header.Group>
-                </Header.Frame>
+                </Header.Navbar>
                 
                 <Header.Feature>
-                    <Header.FeatureCallOut>Watch Joker Now</Header.FeatureCallOut>
+                    <Header.FeatureCallOut>New Amsterdam</Header.FeatureCallOut>
                     <Header.Text>
-                        Arthur Fleck adora hacer reír a la gente, pero su carrera como comediante es un fracaso. El repudio social, la marginación y una serie de trágicos acontecimientos lo conducen por el sendero de la locura y, finalmente, cae en el mundo del crimen.
+                        The oldest hospital in the US receives a new director: the nonconformist Max Goodwin, a doctor determined to change things and save lives.
                     </Header.Text>
-                    <Header.PlayButton>Play</Header.PlayButton>
+                    <Header.ButtonGroup>
+                        <Header.PlayButton>Play</Header.PlayButton>
+                        <Header.InfoButton>Information</Header.InfoButton>
+                    </Header.ButtonGroup>
                 </Header.Feature>
             </Header>
 
