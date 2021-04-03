@@ -8,7 +8,6 @@ export const Background = styled.div`
     background: url(${({ src }) => src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'}) 
     top left / cover no-repeat;
     margin-bottom: 50px;
-    max-height: 45vw;
 
     @media (max-width: 1100px) {
         ${({ dontShowOnSmallViewPort}) => 
@@ -43,7 +42,7 @@ export const Container = styled.div`
 export const Navbar = styled.div`
     display: flex;
     height: 64px;
-    padding: 10px 30px;
+    padding: 15px 30px;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(180deg, rgba(0,0,0,0.7455182756696428) 0%, rgba(22,18,18,0) 100%); 
@@ -72,8 +71,10 @@ export const Link = styled.p`
     margin-right: 30px;
     font-weight: ${({ active }) => (active === 'true' ? '700' : 'normal')};
     cursor: pointer;
+    transition: all .3s;
 
     &:hover {
+        transform:scale(1.1);
         font-weight: bold;
     }
 

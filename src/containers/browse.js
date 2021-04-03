@@ -1,9 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect} from 'react'
 import { SelectProfileContainer } from './profiles'
 import { FirebaseContext } from './../context/firebase';
-import { Card, Header, Loading, Player } from '../components'
+import { Card, Header, Loading, Player, Slider } from '../components'
 import * as ROUTES from '../constants/routes'
 import logo from '../logo.svg'
+import './browse.css';
 import { FooterContainer } from './footer';
 
 export function BrowseContainer({ slides }) {
@@ -12,7 +13,7 @@ export function BrowseContainer({ slides }) {
     const [searchTerm, setSearchTerm] = useState('')
     const [profile, setProfile] = useState({})
     const [loading, setLoading] = useState(true)
-    const [slideRows, setSlideRows] = useState([])
+    const [slideRows, setSlideRows] = useState([])    
 
     const { firebase } = useContext(FirebaseContext)
     const user = firebase.auth().currentUser || {}
@@ -26,6 +27,7 @@ export function BrowseContainer({ slides }) {
     useEffect(() => {
         setSlideRows(slides[category])
     }, [slides, category])
+
 
     return profile.displayName ? (
         <>
@@ -92,9 +94,13 @@ export function BrowseContainer({ slides }) {
                 </Header.Feature>
             </Header>
 
-            <Card.Group>
-                {slideRows.map((slideItem) => (
-                    <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
+            <Slider.Container>
+                {slideRows.map((slideItem, i) => (
+                    <>
+                    <Slider items={slideItem}  category={category} key={i}>
+
+                    </Slider>
+                    {/* <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
                         <Card.Title>{slideItem.title}</Card.Title>
                         <Card.Entities>
                             {slideItem.data.map((item) => (
@@ -108,6 +114,7 @@ export function BrowseContainer({ slides }) {
                                     </Card.Meta>
                                 </Card.Item>
                             ))}
+
                         </Card.Entities>
                         <Card.Feature category={category}>
                             <Player>
@@ -115,9 +122,16 @@ export function BrowseContainer({ slides }) {
                                 <Player.Video src='/videos/bunny.mp4' />
                             </Player>
                         </Card.Feature>
-                    </Card>
+                    </Card> */}
+                    </>
                 ))}
-            </Card.Group>
+                    
+
+                
+            </Slider.Container>
+					
+                
+            
             <FooterContainer />
         </>
     ) : <SelectProfileContainer user={user} setProfile={setProfile}/>

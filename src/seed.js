@@ -57,6 +57,7 @@ export function seedDatabase(firebase) {
       slug: 'man-on-wire',
     });
   
+    
     // Comedies
     firebase.firestore().collection('series').add({
       id: getUUID(),
