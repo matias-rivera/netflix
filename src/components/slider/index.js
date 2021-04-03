@@ -129,12 +129,6 @@ export default function Slider({ category, items, children, ...restProps}){
         </Main>
     </FeatureContext.Provider>
             
-            {/* <Card.Feature category={category}>
-                <Player>
-                    <Player.Button />
-                    <Player.Video src='/videos/bunny.mp4' />
-                </Player>
-            </Card.Feature> */}
 
             </>
 }

@@ -4,7 +4,6 @@ import { FirebaseContext } from './../context/firebase';
 import { Card, Header, Loading, Player, Slider } from '../components'
 import * as ROUTES from '../constants/routes'
 import logo from '../logo.svg'
-import './browse.css';
 import { FooterContainer } from './footer';
 
 export function BrowseContainer({ slides }) {
@@ -48,7 +47,7 @@ export function BrowseContainer({ slides }) {
                         >
                             Films
                         </Header.TextLink>
-                        <Header.TextLink
+                        {/* <Header.TextLink
                         >
                             Popular
                         </Header.TextLink>
@@ -59,7 +58,7 @@ export function BrowseContainer({ slides }) {
                         <Header.TextLink
                         >
                             Wach Again
-                        </Header.TextLink>
+                        </Header.TextLink> */}
                     </Header.Group>
                     <Header.Group>
                         <Header.Search 
@@ -88,8 +87,8 @@ export function BrowseContainer({ slides }) {
                         The oldest hospital in the US receives a new director: the nonconformist Max Goodwin, a doctor determined to change things and save lives.
                     </Header.Text>
                     <Header.ButtonGroup>
-                        <Header.PlayButton>Play</Header.PlayButton>
-                        <Header.InfoButton>Information</Header.InfoButton>
+                        <Header.PlayButton><i className="fas fa-play"></i> Play</Header.PlayButton>
+                        <Header.InfoButton><i className="fas fa-info-circle"></i> Information</Header.InfoButton>
                     </Header.ButtonGroup>
                 </Header.Feature>
             </Header>
@@ -97,32 +96,8 @@ export function BrowseContainer({ slides }) {
             <Slider.Container>
                 {slideRows.map((slideItem, i) => (
                     <>
-                    <Slider items={slideItem}  category={category} key={i}>
+                    <Slider items={slideItem}  category={category} key={i} />
 
-                    </Slider>
-                    {/* <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
-                        <Card.Title>{slideItem.title}</Card.Title>
-                        <Card.Entities>
-                            {slideItem.data.map((item) => (
-                                <Card.Item key={item.docId} item={item}>
-                                    <Card.Image 
-                                        src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} 
-                                    />
-                                    <Card.Meta>
-                                        <Card.SubTitle>{item.title}</Card.SubTitle>
-                                        <Card.Text>{item.description}</Card.Text>
-                                    </Card.Meta>
-                                </Card.Item>
-                            ))}
-
-                        </Card.Entities>
-                        <Card.Feature category={category}>
-                            <Player>
-                                <Player.Button />
-                                <Player.Video src='/videos/bunny.mp4' />
-                            </Player>
-                        </Card.Feature>
-                    </Card> */}
                     </>
                 ))}
                     
@@ -130,7 +105,7 @@ export function BrowseContainer({ slides }) {
                 
             </Slider.Container>
 					
-                
+         
             
             <FooterContainer />
         </>

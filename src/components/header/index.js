@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { 
     Background, 
@@ -15,19 +15,47 @@ import {
     Text,
     PlayButton,
     InfoButton,
+    MuteButton,
     Search,
     SearchIcon,
     SearchInput,
     ButtonGroup,
-    Navbar
+    Navbar,
+    HeroBg,
+    VideoBg
 } from './styles/header'
 
 export default function Header({ bg = true, children, ...restProps }) {
-    return bg ? <Background {...restProps} >{children}</Background> : children
+    const videoRef = useRef(null);
+    const [mute, setMute] = useState(false)
+    const [display, setDisplay] = useState(false)
+    
+    const handlePlayVideo = () => {
+        videoRef.current && setTimeout(function() {
+            setDisplay(true)
+            videoRef.current.play()
+          }, 5000);
+    }
+
+    useEffect(() => {
+        handlePlayVideo();
+    }, [videoRef])
+
+    return bg ? <Background {...restProps} >
+        <HeroBg display={display}>
+            <VideoBg ref={videoRef} loop muted={mute} src={'/videos/new-amsterdam.webm'} type='video/webm' />
+        </HeroBg>
+        {children}
+        <MuteButton onClick={() => setMute(!mute)}><i className={`fas fa-volume-${mute ? 'mute' : 'up'}`}></i></MuteButton>
+        </Background> : children
 }
 
 Header.Feature = function HeaderFeature({ children, ...restProps}){
     return <Feature {...restProps}>{children}</Feature>
+}
+
+Header.Background = function HeaderBackground({ children, ...restProps}){
+    return <Background {...restProps}>{children}</Background>
 }
 
 Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps}){
@@ -75,6 +103,8 @@ Header.Text = function HeaderText({ children, ...restProps}){
 Header.PlayButton = function HeaderPlayButton({children, ...restProps}){
     return <PlayButton {...restProps}>{children}</PlayButton>
 }
+
+
 
 Header.InfoButton = function HeaderInfoButton({children, ...restProps}){
     return <InfoButton {...restProps}>{children}</InfoButton>

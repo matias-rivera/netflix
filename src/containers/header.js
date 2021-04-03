@@ -5,12 +5,12 @@ import logo from '../logo.svg'
 
 export function HeaderContainer({children}) {
     return (
-        <Header>
+        <Header.Background>
             <Header.Navbar>
                 <Header.Logo to={ROUTES.HOME} src={logo} alt='Netflix'/>
                 <Header.ButtonLink to={ROUTES.SIGN_IN}>Sign In</Header.ButtonLink>
             </Header.Navbar>
             {children}
-        </Header>
+        </Header.Background>
     )
 }

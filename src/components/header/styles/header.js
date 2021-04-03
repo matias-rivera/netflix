@@ -7,14 +7,40 @@ export const Background = styled.div`
     flex-direction: column;
     background: url(${({ src }) => src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'}) 
     top left / cover no-repeat;
-    margin-bottom: 50px;
+    position: relative;
+    
+    
+    @media (max-width: 650px){
+        height: 400px;
 
-    @media (max-width: 1100px) {
+    }
+    
+
+`;
+/* @media (max-width: 1100px) {
         ${({ dontShowOnSmallViewPort}) => 
             dontShowOnSmallViewPort && 'background: none;'}
-    }
-`;
-
+    } */
+    
+export const HeroBg = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: ${({ display }) => (display ? '' : 'none')};
+ 
+`
+export const VideoBg = styled.video`
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    background: #232a34;
+`
 
 export const Group = styled.div`
     display: flex;
@@ -46,13 +72,12 @@ export const Navbar = styled.div`
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(180deg, rgba(0,0,0,0.7455182756696428) 0%, rgba(22,18,18,0) 100%); 
-
+    z-index: 100;
     a{
         display: flex;
     }
 
     @media (max-width: 1000px) {
-        margin: 0 30px;
     }
 `;
 
@@ -151,35 +176,67 @@ export const PlayButton = styled.button`
     border-width: 0;
     padding: 10px 20px;
     border-radius: 5px;
-    max-width: 130px;
     font-size: 20px;
     margin-top: 30px;
     cursor: pointer;
+    height:60px;
     transition: background-color 0.2s;
 
     &:hover {
         background-color: #ff1e1e;
         color: white;
     }
+
+    @media (max-width: 650px) {
+        font-size: 10px;
+        height:20px;
+        padding: 5px;
+
+    }
 `;
 
 export const InfoButton = styled.button`
     box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
-    background: radial-gradient(circle, rgba(121,121,121,1) 90%, rgba(149,140,140,0.9051821412158614) 100%);      color: #fff;
+    background: radial-gradient(circle, rgba(121,121,121,1) 90%, rgba(149,140,140,0.9) 100%);      color: #fff;
     font-weight: bold;
     border-width: 0;
     padding: 10px 20px;
     border-radius: 5px;
-    max-width: 160px;
     font-size: 20px;
+    height:60px;
+    margin-left: 10px;
     margin-top: 30px;
     cursor: pointer;
     transition: background-color 0.2s;
 
     &:hover {
-        background: radial-gradient(circle, rgba(121,121,121,0.5214286398153012) 100%, rgba(149,140,140,0.9051821412158614) 100%);
+        background: radial-gradient(circle, rgba(121,121,121,0.5) 100%, rgba(149,140,140,0.9) 100%);
         color: white;
     }
+
+    @media (max-width: 650px) {
+        font-size: 10px;
+        height:20px;
+        padding: 5px;
+
+    }
+`;
+
+export const MuteButton = styled.button`
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    border: none;
+    color: gray;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    font-size:2rem;
+    cursor: pointer;
 `;
 
 export const SearchInput = styled.input`
@@ -245,8 +302,6 @@ export const ButtonLink = styled(ReactRouterLink)`
 
 export const ButtonGroup = styled.div`
     display:flex;
-    max-width: 250px;
-    justify-content: space-between;
 `;
 
 export const Feature = styled(Container)`
@@ -254,9 +309,10 @@ export const Feature = styled(Container)`
     flex-direction: column;
     align-items: normal;
     width: 50%;
+    z-index: 100;
 
-    @media (max-width: 1100px){
-        display:none;
+    @media (max-width: 650px){
+        padding: 100px 0;
     }
 `;
 
@@ -266,6 +322,9 @@ export const Text = styled.p`
     line-height: normal;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
     margin: 0;
+    @media (max-width: 650px){
+        font-size:10px;
+    }
 `;
 
 
@@ -278,6 +337,10 @@ export const FeatureCallOut = styled.h2`
     text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
     margin: 0;
     margin-bottom: 20px;
+
+    @media (max-width: 650px){
+        font-size:30px;
+    }
 `;
 
 
