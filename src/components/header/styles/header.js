@@ -8,10 +8,11 @@ export const Background = styled.div`
     background: url(${({ src }) => src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'}) 
     top left / cover no-repeat;
     position: relative;
+    height: ${({ home }) => home ? 'inherit' : '50vw'};
     
     
-    @media (max-width: 650px){
-        height: 400px;
+    @media (max-width: 1000px){
+        height: ${({ home }) => home ? 'inherit' : '70vw'};
 
     }
     
@@ -49,19 +50,23 @@ export const Group = styled.div`
 
 export const Container = styled.div`
     display: flex;
-    margin: 0 40px;
+    margin: ${({ center }) => (center ? '1rem auto' : '0 40px')};
     max-width: 500px;
-    height: 100px;
-    padding: 18px 0;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    gap:1rem;
+    padding: 200px 0 100px 0;
+    height:100%;
 
     a{
         display: flex;
     }
 
+    @media (max-width: 1920px) {
+        padding:0 ;
+    }
+
     @media (max-width: 1000px) {
-        margin: 0 30px;
+        gap: 0.5rem;
     }
 `;
 
@@ -188,8 +193,8 @@ export const PlayButton = styled.button`
     }
 
     @media (max-width: 650px) {
-        font-size: 10px;
-        height:20px;
+        font-size: 20px;
+        height:40px;
         padding: 5px;
 
     }
@@ -215,8 +220,8 @@ export const InfoButton = styled.button`
     }
 
     @media (max-width: 650px) {
-        font-size: 10px;
-        height:20px;
+        font-size: 20px;
+        height:40px;
         padding: 5px;
 
     }
@@ -271,7 +276,7 @@ export const Profile = styled.div`
 export const Logo = styled.img`
     height: 32px;
     width: 108px;
-    margin-right: 40px;
+    margin-right: ${({ margin }) => (margin ? '40px' : '0')};
 
     @media (min-width: 1449px){
         height: 45px;
@@ -305,32 +310,38 @@ export const ButtonGroup = styled.div`
 `;
 
 export const Feature = styled(Container)`
-    padding: 200px 0 350px 0;
+   
     flex-direction: column;
     align-items: normal;
     width: 50%;
     z-index: 100;
 
     @media (max-width: 650px){
-        padding: 100px 0;
+        padding: 0;
     }
 `;
 
 export const Text = styled.p`
     color: white;
-    font-size: 22px;
+    font-size: 30px;
     line-height: normal;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
     margin: 0;
-    @media (max-width: 650px){
-        font-size:10px;
+
+    @media (max-width: 1400px){
+        font-size: 20px;
+
+    }
+
+    @media (max-width: 850px){
+        display:none;
     }
 `;
 
 
 export const FeatureCallOut = styled.h2`
     color: white;
-    font-size: 80px;
+    font-size: 120px;
     text-transform: uppercase;
     line-height: normal;
     font-weight: bold;
@@ -338,7 +349,16 @@ export const FeatureCallOut = styled.h2`
     margin: 0;
     margin-bottom: 20px;
 
-    @media (max-width: 650px){
+    @media (max-width: 1400px){
+        font-size: 80px;
+
+    }
+
+    @media (max-width: 850px){
+        font-size:50px;
+    }
+
+    @media (max-width: 500px){
         font-size:30px;
     }
 `;

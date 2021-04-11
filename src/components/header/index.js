@@ -31,7 +31,7 @@ export default function Header({ bg = true, children, ...restProps }) {
     const [display, setDisplay] = useState(false)
     
     const handlePlayVideo = () => {
-        videoRef.current && setTimeout(function() {
+        videoRef && videoRef.current && setTimeout(function() {
             setDisplay(true)
             videoRef.current.play()
           }, 5000);
